@@ -82,7 +82,7 @@ void Dbg_NewLine(void)
     tx_bytes("\r\n", 2);
 }
 
-static void put_uint_pad(uint32_t v, int width)       /* in số không dấu, đệm khoảng trắng bên trái cho đủ 'width' (<= 12) */
+void Dbg_WriteUIntPad(uint32_t v, int width)       /* in số không dấu, đệm khoảng trắng bên trái cho đủ 'width' (<= 12) */
 {
     char tmp[11], buf[24];
     int  d = 0, n = 0;
@@ -94,8 +94,8 @@ static void put_uint_pad(uint32_t v, int width)       /* in số không dấu, �
 
 void Dbg_WriteInt(int32_t v)
 {
-    if (v < 0) { tx_bytes("-", 1); put_uint_pad((uint32_t)(-(int64_t)v), 0); }
-    else       { put_uint_pad((uint32_t)v, 0); }
+    if (v < 0) { tx_bytes("-", 1); Dbg_WriteUIntPad((uint32_t)(-(int64_t)v), 0); }
+    else       { Dbg_WriteUIntPad((uint32_t)v, 0); }
 }
 
 void Dbg_WriteHex8(uint8_t v)
