@@ -2,14 +2,8 @@
 
 #if DEBUG_UART
 
-#include <stdbool.h>
 #include <string.h>
 #include "main.h"
-#include "FreeRTOS.h"
-#include "task.h"
-#include "bsp_i2c.h"
-#include "adxl345.h"
-#include "ssd1306.h"
 
 /* Chọn driver UART (tự động):
  *  - CubeMX đã bật USART1 (sinh usart.c/huart1, stm32f1xx_hal_conf.h có HAL_UART_MODULE_ENABLED) -> dùng HAL.
@@ -82,7 +76,7 @@ void Dbg_NewLine(void)
     tx_bytes("\r\n", 2);
 }
 
-void Dbg_WriteUIntPad(uint32_t v, int width)       /* in số không dấu, đệm khoảng trắng bên trái cho đủ 'width' (<= 12) */
+void Dbg_WriteUIntPad(uint32_t v, int width)         /* in số không dấu, đệm khoảng trắng bên trái cho đủ 'width' (<= 12) */
 {
     char tmp[11], buf[24];
     int  d = 0, n = 0;
@@ -104,6 +98,5 @@ void Dbg_WriteHex8(uint8_t v)
     char buf[4] = { '0', 'x', hex[v >> 4], hex[v & 0x0Fu] };
     tx_bytes(buf, 4);
 }
-
 
 #endif /* DEBUG_UART */

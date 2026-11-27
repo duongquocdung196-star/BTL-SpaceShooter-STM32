@@ -27,7 +27,7 @@ const char *Dbg_DriverName(void);                 /* "HAL (CubeMX USART1)" hoặ
 void Dbg_WriteStr(const char *s);
 void Dbg_WriteInt(int32_t v);
 void Dbg_WriteHex8(uint8_t v);                    /* in dạng 0xNN */
-void Dbg_WriteUIntPad(uint32_t v, int width);        /* in số không dấu, đệm khoảng trắng bên trái */
+void Dbg_WriteUIntPad(uint32_t v, int width);     /* số không dấu, đệm trái khoảng trắng cho đủ 'width' (<= 12) */
 void Dbg_NewLine(void);                           /* "\r\n" */
 
 /* --- ghi qua hàng đợi (không chặn) --- */
